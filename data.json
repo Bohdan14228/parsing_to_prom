@@ -1,0 +1,86 @@
+{
+    "tdxdyo": {
+        "categories": "Деревянные магниты",
+        "title": "Магнит маленький",
+        "price": 8,
+        "images": [
+            "images\\tdxdyo_1.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%bc%d0%b0%d0%b3%d0%bd%d0%b8%d1%82-%d0%bc%d0%b0%d0%bb%d0%b5%d0%bd%d1%8c%d0%ba%d0%b8%d0%b9"
+    },
+    "ggjycf": {
+        "categories": "Доски садху",
+        "title": "Доска садху, лодка",
+        "price": 700,
+        "images": [
+            "images\\ggjycf_1.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%b4%d0%be%d1%81%d0%ba%d0%b0-%d1%81%d0%b0%d0%b4%d1%85%d1%83-%d0%bb%d0%be%d0%b4%d0%ba%d0%b0"
+    },
+    "xrzqmt": {
+        "categories": "Наборы ножей",
+        "title": "Мега Box",
+        "price": 1700,
+        "images": [
+            "images\\xrzqmt_1.jpg",
+            "images\\xrzqmt_2.jpg",
+            "images\\xrzqmt_3.jpg",
+            "images\\xrzqmt_4.jpg",
+            "images\\xrzqmt_5.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%bc%d0%b5%d0%b3%d0%b0-box"
+    },
+    "unxzsi": {
+        "categories": "Ножи",
+        "title": "Керамбит дешёвый",
+        "price": 15,
+        "images": [
+            "images\\unxzsi_1.jpg",
+            "images\\unxzsi_2.bmp"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%ba%d0%b5%d1%80%d0%b0%d0%bc%d0%b1%d0%b8%d1%82-%d0%b4%d0%b5%d1%88%d1%91%d0%b2%d1%8b%d0%b9"
+    },
+    "qovush": {
+        "categories": "Ночники USB",
+        "title": "Ночник",
+        "price": 250,
+        "images": [
+            "images\\qovush_1.jpg",
+            "images\\qovush_2.jpg",
+            "images\\qovush_3.jpg",
+            "images\\qovush_4.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%bd%d0%be%d1%87%d0%bd%d0%b8%d0%ba"
+    },
+    "ydfofv": {
+        "categories": "Печать разная",
+        "title": "Карточки 7*10 см",
+        "price": 5,
+        "images": [
+            "images\\ydfofv_1.jpg",
+            "images\\ydfofv_2.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%ba%d0%b0%d1%80%d1%82%d0%be%d1%87%d0%ba%d0%b8-710-%d1%81%d0%bc"
+    },
+    "kjstcj": {
+        "categories": "Резинкострелы, арбалеты",
+        "title": "Автомат с бабочкой",
+        "price": 300,
+        "images": [
+            "images\\kjstcj_1.jpg",
+            "images\\kjstcj_2.bmp"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%b0%d0%b2%d1%82%d0%be%d0%bc%d0%b0%d1%82-%d1%81-%d0%b1%d0%b0%d0%b1%d0%be%d1%87%d0%ba%d0%be%d0%b9"
+    },
+    "cjmmue": {
+        "categories": "Хорека",
+        "title": "Меню обложка с лого",
+        "price": 400,
+        "images": [
+            "images\\cjmmue_1.jpg",
+            "images\\cjmmue_2.jpg",
+            "images\\cjmmue_3.jpg"
+        ],
+        "url": "https://shop.tira.com.ua/?product=%d0%bc%d0%b5%d0%bd%d1%8e-%d0%be%d0%b1%d0%bb%d0%be%d0%b6%d0%ba%d0%b0-%d1%81-%d0%bb%d0%be%d0%b3%d0%be"
+    }
+}

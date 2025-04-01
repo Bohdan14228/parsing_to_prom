@@ -6,7 +6,9 @@ class Locators:
 
     PRODUCT_TITLE = ("xpath", '//h1[contains(@class, "product_title") and contains(@class, "entry-title")]')
     PRODUCT_PRICE = ("xpath", "//p[@class='price']")
-    PRODUCT_IMAGE = ("xpath", '(//div[@class="slick-track"])[2]/div/img')
+    PRODUCT_IMAGES = ("xpath", '(//div[@class="slick-track"])[2]/div/img')
+    PRODUCT_IMAGE = ("xpath", '//div[@class="slick-track"]//img')
+    PRODUCT_PHOTO = ("xpath", "//div[@class='woocommerce-product-details__short-description']//img")
 
     @staticmethod
     def head(count):
