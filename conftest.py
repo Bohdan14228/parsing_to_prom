@@ -22,9 +22,6 @@ def download_image(url, filename, number):
     for i in data:
         response = requests.get(f"{url}{i}", stream=True)
         if response.status_code == 200:
-            # with open(f"{filename}{i}", 'wb') as file:
-            #     for chunk in response.iter_content(1024):
-            #         file.write(chunk)
             return response.url
     print(f"Фото #{number} не загрузилось\n{filename}")
 
