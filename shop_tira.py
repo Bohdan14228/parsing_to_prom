@@ -39,8 +39,6 @@ def test_main(driver):
         all_products_categories[title_cat] = products
 
     # product
-    data_json = {}
-
     data_list = []
     for categories in all_products_categories:
         for prod_url in all_products_categories[categories][:1]:
@@ -73,27 +71,16 @@ def test_main(driver):
 
             images = []
             for index, image in enumerate(image_s, start=1):
-                # filename = f"images\\{id_prod}_{index}"
                 image = f"{'-'.join(image.split('-')[:-1])}"
                 extensions = download_image(image, prod_url, index+1)
                 images.append(extensions)
 
             uniq_id = generate_unique_product_id(k=8)
             data_list.append(
-                [generate_unique_product_id(), title, title, description, description, price, '-', 'UAH', 'шт.', ';'.join(images),
-                 '+', 'Є ОПТ!', 'u', "-", generate_unique_product_id(k=8), categories, uniq_id, uniq_id,
-                 generate_unique_product_id(k=8)]
+                [generate_unique_product_id(), title, title, description, description, price, '-', 'UAH', 'шт.',
+                 ';'.join(images), '+', 'Є ОПТ!', 'u', "-", generate_unique_product_id(k=8), categories, uniq_id,
+                 uniq_id, generate_unique_product_id(k=8)]
             )
 
     write_to_google_sheet("Products", data=data_list)
 
-    #         data_json[id_prod] = {
-    #             'categories': categories,
-    #             'title': title,
-    #             'price': price,
-    #             'images': images,
-    #             'url': prod_url
-    #         }
-    #
-    # with open("data.json", "w", encoding="utf-8") as file:
-    #     json.dump(data_json, file, ensure_ascii=False, indent=4)
