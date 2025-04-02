@@ -1,10 +1,7 @@
-import time
-
 from selenium.common import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import json
 
 from locators import Locators
 from conftest import *
@@ -43,6 +40,7 @@ def test_main(driver):
 
     # product
     data_json = {}
+
     data_list = []
     for categories in all_products_categories:
         for prod_url in all_products_categories[categories][:1]:
@@ -52,6 +50,13 @@ def test_main(driver):
             title = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_TITLE)).text
             price = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_PRICE)).text
             price = int(''.join(price.split(',')[:1]))
+
+            """Обработка описания"""
+            try:
+                description = ' '.join([i.text.strip() for i in wait(driver, 5).
+                                       until(EC.presence_of_all_elements_located(Locators.PRODUCT_DESCRIPTION))])
+            except TimeoutException:
+                description = '-'
 
             image_s = 'нету фото'
             try:
@@ -66,28 +71,29 @@ def test_main(driver):
             except:
                 pass
 
-            id_prod = generate_unique_product_id()
             images = []
             for index, image in enumerate(image_s, start=1):
-                filename = f"images\\{id_prod}_{index}"
+                # filename = f"images\\{id_prod}_{index}"
                 image = f"{'-'.join(image.split('-')[:-1])}"
-                extensions = download_image(image, filename)
-                images.append(f"{filename}{extensions}")
+                extensions = download_image(image, prod_url, index+1)
+                images.append(extensions)
 
             uniq_id = generate_unique_product_id(k=8)
             data_list.append(
-                [id_prod, title, title, '-', '-', price, '-', 'UAH', 'шт.', image_s[0], "'+", 'Є ОПТ!', 'u', "-",
-                 generate_unique_product_id(k=8), categories, uniq_id, uniq_id, generate_unique_product_id(k=8)]
+                [generate_unique_product_id(), title, title, description, description, price, '-', 'UAH', 'шт.', ';'.join(images),
+                 '+', 'Є ОПТ!', 'u', "-", generate_unique_product_id(k=8), categories, uniq_id, uniq_id,
+                 generate_unique_product_id(k=8)]
             )
-            write_to_google_sheet("Products", data=data_list)
 
-            data_json[id_prod] = {
-                'categories': categories,
-                'title': title,
-                'price': price,
-                'images': images,
-                'url': prod_url
-            }
+    write_to_google_sheet("Products", data=data_list)
 
-    with open("data.json", "w", encoding="utf-8") as file:
-        json.dump(data_json, file, ensure_ascii=False, indent=4)
+    #         data_json[id_prod] = {
+    #             'categories': categories,
+    #             'title': title,
+    #             'price': price,
+    #             'images': images,
+    #             'url': prod_url
+    #         }
+    #
+    # with open("data.json", "w", encoding="utf-8") as file:
+    #     json.dump(data_json, file, ensure_ascii=False, indent=4)

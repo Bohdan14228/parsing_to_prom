@@ -24,7 +24,7 @@ def write_to_google_sheet(name_sheet, data=[[]]):
         sheet_n.format("A1:S1", {"textFormat": {"bold": True}})
     sheet_n.update("A2", data)
 
-write_to_google_sheet("Products")
+write_to_google_sheet("Test", [['+']])
 
     # sheet_n.update(f"A1:C{len(values)}", values)
     # sheet_n.update_cell(len(values) + 1, 2, "=sum(B2:B4)")

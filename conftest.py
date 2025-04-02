@@ -17,16 +17,16 @@ def driver():
     driver.quit()
 
 
-def download_image(url, filename):
+def download_image(url, filename, number):
     data = ['.jpg', '.bmp', '.png']
     for i in data:
         response = requests.get(f"{url}{i}", stream=True)
         if response.status_code == 200:
-            with open(f"{filename}{i}", 'wb') as file:
-                for chunk in response.iter_content(1024):
-                    file.write(chunk)
-            return i
-    print(f"Фото не загрузилось\n{filename}")
+            # with open(f"{filename}{i}", 'wb') as file:
+            #     for chunk in response.iter_content(1024):
+            #         file.write(chunk)
+            return response.url
+    print(f"Фото #{number} не загрузилось\n{filename}")
 
 
 existing_ids = set()
@@ -34,7 +34,7 @@ existing_ids = set()
 
 def generate_unique_product_id(k=6):
     # chars = string.ascii_lowercase + string.digits
-    chars = string.ascii_lowercase
+    chars = string.digits
     while True:
         new_id = ''.join(random.choices(chars, k=k))
         if new_id not in existing_ids:

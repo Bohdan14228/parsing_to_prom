@@ -8,19 +8,18 @@ from locators import Locators
 from selenium.webdriver.common.action_chains import ActionChains
 from conftest import *
 
-# url = 'https://shop.tira.com.ua/?product=%d0%bd%d0%b0%d0%b1%d0%be%d1%80-%d1%82%d1%8b%d1%87%d0%ba%d0%be%d0%b2%d1%8b%d0%b9-%d0%bd%d0%be%d0%b2%d1%8b%d0%b9'
-# url = 'https://shop.tira.com.ua/?product=%d0%bd%d0%b0%d0%b1%d0%be%d1%80-%d0%be%d1%85%d0%be%d1%82%d0%bd%d0%b8%d1%87%d0%b8%d0%b9'
-# url = 'https://shop.tira.com.ua/?product=%d0%ba%d0%b5%d1%80%d0%b0%d0%bc%d0%b1%d0%b8%d1%82-%d0%b4%d0%b5%d1%88%d1%91%d0%b2%d1%8b%d0%b9'
-# url = "https://shop.tira.com.ua/?product=%d0%b0%d0%b2%d1%82%d0%be%d0%bc%d0%b0%d1%82-%d1%81-%d0%b1%d0%b0%d0%b1%d0%be%d1%87%d0%ba%d0%be%d0%b9"
-url = "https://shop.tira.com.ua/?product=%d0%bd%d0%b0%d0%ba%d0%bb%d0%b5%d0%b9%d0%ba%d0%b8-%d0%bd%d0%b0-%d0%bb%d0%b8%d1%81%d1%82%d0%b0%d1%85-%d0%b04"
+url = "https://shop.tira.com.ua/?product=%d0%ba%d0%b5%d1%80%d0%b0%d0%bc%d0%b1%d0%b8%d1%82-%d0%b4%d0%b5%d1%88%d1%91%d0%b2%d1%8b%d0%b9"
 
 
-# def test_tt(driver):
-#     driver.get(url)
-#     data_json = {}
-#     title = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_TITLE)).text
-#     price = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_PRICE)).text
-#     price = int(''.join(price.split(',')[:1]))
+def test_tt(driver):
+    driver.get(url)
+    # data_json = {}
+    # title = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_TITLE)).text
+    # price = wait(driver, 5).until(EC.presence_of_element_located(Locators.PRODUCT_PRICE)).text
+    # price = int(''.join(price.split(',')[:1]))
+    description = ' '.join([i.text.strip() for i in wait(driver, 5).
+                           until(EC.presence_of_all_elements_located(Locators.PRODUCT_DESCRIPTION))])
+    print(description)
 #
 #     image_s = 'нету фото'
 #     try:
@@ -75,7 +74,3 @@ url = "https://shop.tira.com.ua/?product=%d0%bd%d0%b0%d0%ba%d0%bb%d0%b5%d0%b9%d0
 #     print(data[i]['title'])
     # for y in data[i]:
     #     print(y)
-
-t = []
-t.append([1])
-print(t)
