@@ -11,12 +11,24 @@ groups_titles = ["Номер_групи", "Назва_групи", "Назва_�
                  "Ідентифікатор_батьківської_групи"]
 
 
-def write_to_google_sheet(name_sheet, data: List[List[Any]]):
+def connect_table():
     scopes = ["https://www.googleapis.com/auth/spreadsheets"]
     creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
     client = gspread.authorize(creds)
     sheet_id = "12ryUt0S4LPl2u96h8K3pdV6qYSHU8ShaPPjzHbwkc-c"
-    workbook = client.open_by_key(sheet_id)
+    return client.open_by_key(sheet_id)
 
-    sheet_n = workbook.worksheet(name_sheet)
-    sheet_n.update("A2", data)
+
+def write_to_google_sheet(name_sheet, data: List[List[Any]]):
+    workbook = connect_table()
+    sheet = workbook.worksheet(name_sheet)
+    sheet.update("A2", data)
+
+
+def get_all(name_sheet):
+    workbook = connect_table()
+    sheet = workbook.worksheet(name_sheet)
+    data = sheet.get_all_values()
+    filled_values_by_row = [[v for v in row if v] for row in data]
+    filled_positions = [(r, c) for r, row in enumerate(data) for c, v in enumerate(row) if v]
+    return filled_values_by_row[1:]

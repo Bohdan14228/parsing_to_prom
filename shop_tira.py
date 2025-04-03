@@ -5,7 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 from locators import Locators
 from conftest import *
-from google_test import write_to_google_sheet
+from google_test import write_to_google_sheet, get_all
 
 url = 'https://shop.tira.com.ua/'
 
@@ -40,7 +40,12 @@ def test_main(driver):
 
     # product
     data_list = []
+    group_list = []
     for categories in all_products_categories:
+
+        id_group = generate_unique_product_id(k=8)
+        number_group = generate_unique_product_id(k=8)
+
         for prod_url in all_products_categories[categories][:1]:
 
             driver.get(prod_url)
@@ -74,13 +79,29 @@ def test_main(driver):
                 image = f"{'-'.join(image.split('-')[:-1])}"
                 extensions = download_image(image, prod_url, index+1)
                 images.append(extensions)
+            images = ';'.join(images)
+
+            get_all_info = get_all("Products")
+            for row in get_all_info:
+                if row[1] == title:
+                    if row[3] != description or row[5] != price or row[9] != images or row[15] != categories:
+                        row[3] = description
+                        row[4] = description
+                        row[5] = price
+                        row[9] = images
+                        row[15] = categories
 
             uniq_id = generate_unique_product_id(k=8)
             data_list.append(
                 [generate_unique_product_id(), title, title, description, description, price, '-', 'UAH', 'шт.',
-                 ';'.join(images), '+', 'Є ОПТ!', 'u', "-", generate_unique_product_id(k=8), categories, uniq_id,
-                 uniq_id, generate_unique_product_id(k=8)]
+                 images, '+', 'Є ОПТ!', 'u', "-", number_group, categories, uniq_id,
+                 uniq_id, id_group]
             )
 
+        group_list.append(
+            [number_group, categories, categories, id_group]
+        )
+
     write_to_google_sheet("Products", data=data_list)
+    write_to_google_sheet("Export Groups Sheet", data=data_list)
 
