@@ -75,6 +75,7 @@ from conftest import *
     # for y in data[i]:
     #     print(y)
 
-data = {'one': 1, 'two': 2, 'three': 3}
-c = data.keys()
-print(c)
+for i in []:
+    if i == 1:
+        print(1)
+print(1)
