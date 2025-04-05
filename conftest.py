@@ -26,14 +26,25 @@ def download_image(url, filename, number):
     print(f"Фото #{number} не загрузилось\n{filename}")
 
 
-existing_ids = set()
+# existing_ids = set()
 
 
-def generate_unique_product_id(k=6):
+def generate_id(k=6):
     # chars = string.ascii_lowercase + string.digits
     chars = string.digits
+    return ''.join(random.choices(chars, k=k))
+
+
+def unic_id_search_and_gen(pid: int, data: list, pid_gen: int):
+    l = [i[pid] for i in data]
     while True:
-        new_id = ''.join(random.choices(chars, k=k))
-        if new_id not in existing_ids:
-            existing_ids.add(new_id)
+        new_id = generate_id(pid_gen)
+        if new_id not in l:
             return new_id
+
+
+def search_load_data(pid: int, categories: str, data: list):
+    l = [i[pid] for i in data]
+    if categories in l:
+        return True
+    return False

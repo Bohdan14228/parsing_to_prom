@@ -75,7 +75,8 @@ from conftest import *
     # for y in data[i]:
     #     print(y)
 
-for i in []:
-    if i == 1:
-        print(1)
-print(1)
+t = [1, 2, 3, 4, 5]
+r = [1, 2, 3, 4, 5, 6]
+
+if not all(x == y for x, y in zip(t, r)):
+    print("g")

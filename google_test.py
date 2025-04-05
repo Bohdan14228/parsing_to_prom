@@ -30,5 +30,7 @@ def get_all(name_sheet):
     sheet = workbook.worksheet(name_sheet)
     data = sheet.get_all_values()
     filled_values_by_row = [[v for v in row if v] for row in data]
-    filled_positions = [(r, c) for r, row in enumerate(data) for c, v in enumerate(row) if v]
     return filled_values_by_row[1:]
+
+
+print(get_all("Export Groups Sheet"))
