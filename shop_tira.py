@@ -5,6 +5,7 @@ from base_page import BasePage
 from locators import Locators
 from conftest import *
 from google_test import write_to_google_sheet, get_all
+from OpenAI_connect import get_description_from_product
 
 
 class ShopTira(BasePage):
@@ -93,10 +94,13 @@ class ShopTira(BasePage):
                         break
                 if not updated:
                     uniq_id = unic_id_search_and_gen(pid=16, data=get_all_info, pid_gen=7)
+                    generate_data = get_description_from_product(
+                        title=title, image_urls=images[:1], description=description)
                     get_all_info.append(
-                        [unic_id_search_and_gen(pid=0, data=get_all_info, pid_gen=6), title, title, description,
-                         description, price, '-', 'UAH', 'шт.', images_format_prom, '+', 'Є ОПТ!', 'u', "-",
-                         number_group, categories, uniq_id, uniq_id, id_group]
+                        [unic_id_search_and_gen(pid=0, data=get_all_info, pid_gen=6), generate_data["title_ru"],
+                         generate_data["title_ua"], generate_data["description_ru"], generate_data["description_ua"],
+                         price, '-', 'UAH', 'шт.', images_format_prom, '+', 'Є ОПТ!', 'u', "-", number_group,
+                         generate_data["categories_ru"], uniq_id, uniq_id, id_group]
                     )
 
             if updated_group:
